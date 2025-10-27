@@ -4,7 +4,6 @@ import { products } from '@/data/products';
 const Catalogo = () => {
   return (
     <div className="min-h-screen">
-      {/* Catalog Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-center mb-12">
@@ -19,7 +18,6 @@ const Catalogo = () => {
         </div>
       </section>
 
-      {/* Categories Section */}
       <section className="py-12 bg-muted">
         <div className="container mx-auto px-4">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12">
