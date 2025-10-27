@@ -70,7 +70,6 @@ export const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile menu */}
           <div className="md:hidden pb-4">
             <ul className="flex justify-center space-x-6">
               <li>
