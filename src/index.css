@@ -69,7 +69,6 @@
 }
 
 @layer components {
-  /* Product card hover effect */
   .product-card {
     @apply transition-transform duration-300 ease-in-out hover:-translate-y-1;
   }
