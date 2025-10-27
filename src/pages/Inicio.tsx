@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 const Inicio = () => {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
       <section className="bg-muted py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -32,7 +31,6 @@ const Inicio = () => {
         </div>
       </section>
 
-      {/* Featured Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="font-heading text-4xl font-bold text-center mb-12">
@@ -67,7 +65,6 @@ const Inicio = () => {
         </div>
       </section>
 
-      {/* Values Section */}
       <section className="bg-muted py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="font-heading text-4xl font-bold text-center mb-12">
