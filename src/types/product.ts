@@ -1,11 +1,11 @@
 export interface Product {
-  id: string;
+  id: string | number;
   name: string;
   description: string;
   price: number;
   stock: number;
-  image: string;
-  category: 'vestidos' | 'camisas' | 'pantalones' | 'accesorios';
+  image_url: string;
+  category: string;
 }
 
 export interface CartItem extends Product {

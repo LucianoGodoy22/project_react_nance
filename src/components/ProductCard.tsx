@@ -1,5 +1,5 @@
 import { Product } from '@/types/product';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/hooks/useCart';
 
@@ -8,36 +8,41 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const { addToCart } = useCart();
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('es-CL', {
-      style: 'currency',
-      currency: 'CLP',
-    }).format(price);
-  };
+  const { addItem } = useCart();
 
   return (
-    <Card className="h-full flex flex-col product-card">
-      <CardHeader className="p-0">
+    <Card className="overflow-hidden flex flex-col h-full">
+      <div className="aspect-square relative overflow-hidden bg-gray-100">
         <img
-          src={product.image}
+          src={product.image_url} 
           alt={product.name}
-          className="w-full h-48 object-cover object-center rounded-t-lg"
+          className="object-cover w-full h-full transition-transform hover:scale-105"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300?text=No+Image';
+          }}
         />
-      </CardHeader>
-      <CardContent className="flex-1 p-4">
-        <h5 className="font-heading text-xl font-semibold mb-2">{product.name}</h5>
-        <p className="text-muted-foreground text-sm">{product.description}</p>
+      </div>
+      <CardContent className="p-4 flex-1">
+        <div className="flex justify-between items-start mb-2">
+          <div>
+            <h3 className="font-heading font-semibold text-lg">{product.name}</h3>
+            <p className="text-sm text-muted-foreground capitalize">{product.category}</p>
+          </div>
+          <span className="font-bold text-lg">
+            ${product.price.toLocaleString('es-CL')}
+          </span>
+        </div>
+        <p className="text-sm text-muted-foreground line-clamp-2">
+          {product.description}
+        </p>
       </CardContent>
-      <CardFooter className="flex flex-col items-start gap-2 p-4 pt-0">
-        <p className="text-2xl font-bold text-primary">{formatPrice(product.price)}</p>
-        <p className="text-sm text-muted-foreground">Stock: {product.stock} unidades</p>
+      <CardFooter className="p-4 pt-0">
         <Button 
-          onClick={() => addToCart(product)}
-          className="w-full"
+          className="w-full" 
+          onClick={() => addItem(product)}
+          disabled={product.stock <= 0}
         >
-          Agregar al Carrito
+          {product.stock > 0 ? 'Agregar al carrito' : 'Sin stock'}
         </Button>
       </CardFooter>
     </Card>

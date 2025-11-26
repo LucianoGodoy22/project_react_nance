@@ -1,7 +1,9 @@
 import { ProductCard } from '@/components/ProductCard';
-import { products } from '@/data/products';
+import { useProducts } from '@/hooks/useProducts'; 
 
 const Catalogo = () => {
+  const products = useProducts(); 
+
   return (
     <div className="min-h-screen">
       <section className="py-12">
@@ -10,11 +12,19 @@ const Catalogo = () => {
             Nuestro catálogo
           </h1>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {}
+          {products.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">Cargando productos...</p>
+              <p className="text-sm text-gray-400 mt-2">(Si tarda mucho, verifica que el Backend esté encendido)</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
