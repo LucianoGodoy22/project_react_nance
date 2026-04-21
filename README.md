@@ -1,4 +1,4 @@
-# Nancé — Own Your Luxury
+# Nancé
 
 > **Academic Project** — Developed as part of a Full Stack Web Development course at university, exploring the integration of modern frontend frameworks with RESTful backend APIs.
 ---
